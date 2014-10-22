@@ -1,10 +1,10 @@
 h1 Things
 - if @things.any?
 	p These things are in Bloom's pocket:
-	ul#things 
+	ol#things 
 		-@things.each do |thing|
 			li <a href="/things/#{thing.id}">#{thing.title}</a>
-	p <a href="/things/new"> Put something else in Bloom's pocket</a>
+	p <a href="/things/new" class="myButton"> Put something else in Bloom's pocket</a>
 - else
 	p There's nothing in Bloom's pocket yet.
-	p <a href="/things/new" Put something in Bloom's pocket<a/>
+	p <a href="/things/new" class="myButton">Put something in Bloom's pocket<a/>

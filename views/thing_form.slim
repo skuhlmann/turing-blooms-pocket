@@ -1,16 +1,16 @@
 label for="title" Title:
-input#title type="text" name="thing[title]" value="#{@thing.title}" 
+input#title type="text" class='inputs' name="thing[title]" value="#{@thing.title}" 
 p	
 label for="section" Section:
-input#section type="text" name="thing[section]" value="#{@thing.section}"
+input#section type="text" class='inputs' name="thing[section]" value="#{@thing.section}"
 p
 label for="line_number" Line Number:
-input#lines type="number" name="thing[line_number]" value="#{@thing.line_number}"
+input#line_number type="number" class='inputs' name="thing[line_number]" value="#{@thing.line_number}"
 p
 label for="time_of_day" Date (mm/dd/yyyy):
-input#time_of_day type="text" name="thing[time_of_day]" value="#{@thing.time_of_day.strftime("%m/%d/%Y") if @thing.time_of_day}"
+input#time_of_day type="text" class='inputs' name="thing[time_of_day]" value="#{@thing.time_of_day.strftime("%m/%d/%Y") if @thing.time_of_day}"
 p
 label for="lines" Excerpt:
-input#lines type="text" name="thing[lines]" value="#{@thing.lines}"
+textarea#lines rows="8" class='inputs' name="thing[lines]" == @thing.lines
 p
-input type="submit" value="Save Thing"
+input type="submit" value="Save This Thing" class="myButton"
