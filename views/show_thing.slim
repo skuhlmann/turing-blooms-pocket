@@ -1,0 +1,11 @@
+h1 = @thing.title
+p Section: #{@thing.section if @thing.section}
+p Line: #{@thing.line_number}
+p When: #{@thing.time_of_day.strftime("%e %B %Y")}
+pre= @thing.lines
+p <a href= "/things">Back to all things</a>
+p <a href= "/things/#{@thing.id}/edit">Edit this thing</a>
+
+form action="/things/#{@thing.id}" method="POST"
+	input type="hidden" name="_method" value="DELETE"
+	input type="submit" value="Delete"
