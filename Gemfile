@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
-gem 'sinatra'
+gem 'sinatra', :github => "sinatra/sinatra"
 gem 'slim'
 gem 'sass'
 gem "dm-core"

@@ -6,6 +6,7 @@ require './thing'
 
 configure do
   enable :sessions
+  set :session_secret, 'contransmagnificandjewbangtantiality'
   set :username, 'molly'
   set :password, 'bloom'
 end
