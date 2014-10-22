@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
+group :production do
+    gem 'puma'
+end
 gem 'sinatra'
 gem 'slim'
 gem 'sass'
