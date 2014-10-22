@@ -1,7 +1,9 @@
 require 'dm-core'
 require 'dm-migrations'
 
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+configure :development do 
+	DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+end
 
 class Thing
 	include DataMapper::Resource
@@ -25,6 +27,7 @@ get '/things' do
 end
 
 get '/things/new' do 
+	halt(401,'Not Authorized') unless session[:admin]
 	@thing = Thing.new
 	slim :new_thing
 end
@@ -34,7 +37,8 @@ get '/things/:id' do
 	slim :show_thing
 end
 
-get '/things/:id/edit' do 
+get '/things/:id/edit' do
+	halt(401,'Not Authorized') unless session[:admin] 
 	@thing = Thing.get(params[:id])
 	slim :edit_thing
 end
@@ -51,6 +55,7 @@ put '/things/:id' do
 end
 
 delete '/things/:id' do
+	halt(401,'Not Authorized') unless session[:admin]
   Thing.get(params[:id]).destroy
   redirect to('/things')
 end
