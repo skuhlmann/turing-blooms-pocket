@@ -24,6 +24,8 @@ GEM
       data_objects (= 0.10.14)
     eventmachine (1.0.3)
     pg (0.17.1)
+    puma (2.9.1)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     sass (3.4.6)
     sinatra (1.0)
@@ -47,6 +49,7 @@ DEPENDENCIES
   dm-postgres-adapter
   dm-sqlite-adapter
   pg
+  puma
   sass
   sinatra
   slim
