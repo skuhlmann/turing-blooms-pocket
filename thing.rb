@@ -23,7 +23,6 @@ get '/things' do
 end
 
 get '/things/new' do 
-	halt(401,'Not Authorized') unless session[:admin]
 	@thing = Thing.new
 	slim :new_thing
 end
@@ -34,7 +33,6 @@ get '/things/:id' do
 end
 
 get '/things/:id/edit' do
-	halt(401,'Not Authorized') unless session[:admin] 
 	@thing = Thing.get(params[:id])
 	slim :edit_thing
 end
