@@ -17,8 +17,24 @@ end
 
 DataMapper.finalize
 
+module ThingHelpers
+	def find_things
+		@things = Thing.all
+	end
+
+	def find_thing
+		Thing.get(params[:id])
+	end
+
+	def create_thing
+		@thing = Thing.create(params[:thing])
+	end
+end
+
+helpers ThingHelpers
+
 get '/things' do 
-	@things = Thing.all
+	find_things
 	slim :things
 end
 
@@ -28,29 +44,32 @@ get '/things/new' do
 end
 
 get '/things/:id' do 
-	@thing = Thing.get(params[:id])
+	@thing = find_thing
 	slim :show_thing
 end
 
 get '/things/:id/edit' do
-	@thing = Thing.get(params[:id])
+	@thing = find_thing
 	slim :edit_thing
 end
 
 post '/things' do 
-	thing = Thing.create(params[:thing])
-	redirect to("/things/#{thing.id}")
+	flash[:notice] = "This thing is now in Bloom's pocket" if create_thing
+	redirect to("/things/#{@thing.id}")
 end
 
 put '/things/:id' do
-  thing = Thing.get(params[:id])
-  thing.update(params[:thing])
+  thing = find_thing
+  if thing.update(params[:thing])
+  	flash[:notice] = "This thing has been updated"
+  end
   redirect to("/things/#{thing.id}")
 end
 
 delete '/things/:id' do
-	halt(401,'Not Authorized') unless session[:admin]
-  Thing.get(params[:id]).destroy
+  if find_thing.destroy
+  	flash[:notice] = "A thing has been taken out of Bloom's pocket"
+  end
   redirect to('/things')
 end
 

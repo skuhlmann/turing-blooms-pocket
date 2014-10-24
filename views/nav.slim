@@ -1,6 +1,12 @@
 div id='cssmenu'
   ul
-    li#active <a href="/" title="Home">Home</a>
-    li <a href="/about" title="About">About</a>
-    li <a href="/things" title="Things">Things in His Pocket</a>
-    li#last <a href="/login" title="Login">Login</a>
+    li#active 
+    	a href="/" title="Home" class==current? Home
+    li 
+    	a href="/about" class==current?("/about") title="About" About
+    li
+    	a href="/things" class==current?("/things") title="Things" Things in His Pocket
+    li
+    	a href="/contact" class==current?("/contact") title="Contact" Contact
+    li#last
+    	a href="/login" class==current?("/login") title="Login" Login

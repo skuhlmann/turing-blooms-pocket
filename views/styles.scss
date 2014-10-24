@@ -88,6 +88,16 @@ a:active {
     text-decoration: none;
 }
 
+.flash {
+  width: auto;
+  padding: 5px;
+  font-weight: bold;
+  margin: 0px;
+  background: $yellow;
+  color: $green;
+  border: 1px solid $green;
+}
+
 /* form */
 
 label { display: block; }
@@ -199,6 +209,9 @@ label { display: block; }
 #cssmenu ul li a:hover {
   color: #333333;
 }
+#cssmenu ul li a.current {
+  color: $yellow;
+}
 #cssmenu ul li a:hover:before {
   width: 100%;
 }
@@ -210,7 +223,7 @@ label { display: block; }
   top: 19px;
   height: 6px;
   width: 6px;
-  background: #ffffff;
+  background: $yellow;
   opacity: .5;
 }
 #cssmenu ul li a:before {
@@ -268,3 +281,5 @@ label { display: block; }
     display: none;
   }
 }
+
+
