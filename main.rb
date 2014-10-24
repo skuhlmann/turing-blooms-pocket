@@ -4,6 +4,8 @@ require 'slim'
 require 'sass'
 require 'sinatra/flash'
 require 'pony'
+require 'v8'
+require 'coffee-script'
 require './thing'
 require './sinatra/auth'
 
@@ -68,6 +70,7 @@ before do
 end	
 
 get('/styles.css'){ scss :styles }
+get('/javascripts/application.js'){ coffee :application }
 
 get '/' do
   slim :home
