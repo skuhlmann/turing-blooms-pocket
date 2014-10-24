@@ -5,9 +5,9 @@ require 'sass'
 require 'sinatra/flash'
 require 'pony'
 require './thing'
+require './sinatra/auth'
 
 configure do
-  enable :sessions
   set :session_secret, 'contransmagnificandjewbangtantiality'
   set :username, 'molly'
   set :password, 'bloom'
@@ -49,7 +49,7 @@ helpers do
       :from        => params[:name] + "<" + params[:email] + ">", 
       :to          => 'turingsam@gmail.com',
       :subject     => params[:name] + " has contacted you", 
-      :body        => params[:message] + params[:email],
+      :body        => params[:message] + " " + params[:email],
       :via         => :smtp,
       :via_options => {
         :address              => 'smtp.gmail.com', 
@@ -95,24 +95,6 @@ post '/contact' do
   send_message
   flash[:notice] = "Thanks for your message."
   redirect to('/')
-end
-
-get '/login' do 
-	slim :login
-end
-
-post '/login' do 
-	if params[:username] == settings.username && params[:password] == settings.password
-		session[:admin] = true
-		redirect to('/things')
-	else
-		slim :login
-	end
-end
-
-get '/logout' do
-  session.clear
-  redirect to('/login')
 end
 
 

@@ -8,5 +8,8 @@ div id='cssmenu'
     	a href="/things" class==current?("/things") title="Things" Things in His Pocket
     li
     	a href="/contact" class==current?("/contact") title="Contact" Contact
-    li#last
-    	a href="/login" class==current?("/login") title="Login" Login
+  	li#last
+  		- if authorized?
+    		a href="/logout" class==current?("/login") title="Logout" Logout
+    	- else
+	    	a href="/login" title="Login" Login

@@ -39,6 +39,7 @@ get '/things' do
 end
 
 get '/things/new' do 
+	protected!
 	@thing = Thing.new
 	slim :new_thing
 end
@@ -49,6 +50,7 @@ get '/things/:id' do
 end
 
 get '/things/:id/edit' do
+	protected!
 	@thing = find_thing
 	slim :edit_thing
 end
@@ -67,6 +69,7 @@ put '/things/:id' do
 end
 
 delete '/things/:id' do
+	protected!
   if find_thing.destroy
   	flash[:notice] = "A thing has been taken out of Bloom's pocket"
   end
