@@ -9,6 +9,7 @@ class Thing
 	property :lines,       Text
 	property :line_number, Integer
 	property :time_of_day, Date
+	property :fingers,     Integer, :default => 0
 
 	def time_of_day=date
 		super Date.strptime(date, '%m/%d/%Y')
@@ -76,4 +77,10 @@ delete '/things/:id' do
   redirect to('/things')
 end
 
-
+post '/things/:id/finger' do 
+	@thing = find_thing
+	@thing.fingers = @thing.fingers.next
+	@thing.save
+	redirect to"/things/#{@thing.id}" unless request.xhr?
+  slim :finger, :layout => false
+end

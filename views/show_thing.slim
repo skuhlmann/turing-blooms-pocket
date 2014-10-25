@@ -3,6 +3,10 @@ p Section: #{@thing.section if @thing.section}
 p Line: #{@thing.line_number}
 p When: #{@thing.time_of_day.strftime("%e %B %Y")}
 pre= @thing.lines
+#finger
+	form action="/things/#{@thing.id}/finger" method="POST"
+		input type="submit" value="Finger"
+	== slim :finger
 p <a href= "/things" class="myButton">Back to all things</a> 
 p <a href= "/things/#{@thing.id}/edit" class="myButton">Edit this thing</a>
 form action="/things/#{@thing.id}" method="POST"

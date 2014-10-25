@@ -156,6 +156,20 @@ label { display: block; }
   position:relative;
   top:1px;
 }
+#finger { 
+  p{
+    font-size: 10px;
+    color: $green;
+  }
+  input {
+    background: url(/images/finger.png) 0 2px no-repeat;
+    border: $green 1px solid;
+    height: 28px;
+    padding-left: 24px;
+    font-family: $main-font;
+    color: $green;
+  } 
+}
 
 /* nav */
 
